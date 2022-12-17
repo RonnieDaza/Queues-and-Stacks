@@ -78,3 +78,9 @@ heappush(fruits, "apple")
 heappush(fruits, "banana")
 
 print(fruits)
+
+from heapq import heappop
+
+print(heappop(fruits))
+
+print(fruits)
