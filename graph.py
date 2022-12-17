@@ -226,3 +226,10 @@ def by_latitude(city):
     city.name
     for city in shortest_path(graph, city1, city2, by_latitude)
 )
+
+
+
+
+
+def connected(graph, source, destination):
+    return shortest_path(graph, source, destination) is not None
