@@ -128,3 +128,11 @@ class PriorityQueue:
 
     def dequeue(self):
         return heappop(self._elements)[1]
+
+print(messages.dequeue())
+
+print(messages.dequeue())
+
+print(messages.dequeue())
+
+print(messages.dequeue())
