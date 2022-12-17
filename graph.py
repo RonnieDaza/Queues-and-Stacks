@@ -304,3 +304,24 @@ def search(traverse, graph, source, predicate, order_by=None):
     for node in traverse(graph, source, order_by):
         if predicate(node):
             return node
+
+
+
+
+
+from graph import (
+    City,
+    load_graph,
+    depth_first_traverse,
+    depth_first_search as dfs,
+)
+
+def is_twentieth_century(city):
+    return city.year and 1901 <= city.year <= 2000
+
+nodes, graph = load_graph("/Users/user/Desktop/New folder/roadmap.dot", City.from_dict)
+city = dfs(graph, nodes["edinburgh"], is_twentieth_century)
+city.name
+
+for city in depth_first_traverse(graph, nodes["edinburgh"]):
+    print(city.name)
