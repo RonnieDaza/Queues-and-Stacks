@@ -91,3 +91,16 @@ person3 = ("John", "Doe", 24)
 
 print(person1 < person2)
 print(person2 < person3)
+
+from collections import deque
+from heapq import heappop, heappush
+
+class PriorityQueue:
+    def __init__(self):
+        self._elements = []
+
+    def enqueue_with_priority(self, priority, value):
+        heappush(self._elements, (priority, value))
+
+    def dequeue(self):
+        return heappop(self._elements)
