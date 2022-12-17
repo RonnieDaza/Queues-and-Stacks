@@ -233,3 +233,11 @@ def by_latitude(city):
 
 def connected(graph, source, destination):
     return shortest_path(graph, source, destination) is not None
+
+
+
+
+
+from graph import connected
+connected(graph, nodes["belfast"], nodes["glasgow"])
+connected(graph, nodes["belfast"], nodes["derry"])
