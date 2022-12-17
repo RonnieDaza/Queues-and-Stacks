@@ -118,3 +118,13 @@ messages.enqueue_with_priority(CRITICAL, "Brake pedal depressed")
 messages.enqueue_with_priority(IMPORTANT, "Hazard lights turned on")
 
 print(messages.dequeue())
+
+class PriorityQueue:
+    def __init__(self):
+        self._elements = []
+
+    def enqueue_with_priority(self, priority, value):
+        heappush(self._elements, (-priority, value))
+
+    def dequeue(self):
+        return heappop(self._elements)[1]
