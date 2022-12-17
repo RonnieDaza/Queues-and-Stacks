@@ -36,3 +36,11 @@ PRODUCTS = (
     ":thread:",
     ":yo-yo:",
 )
+
+@dataclass(order=True)
+class Product:
+    priority: int
+    label: str = field(compare=False)
+
+    def __str__(self):
+        return self.label
