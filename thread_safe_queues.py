@@ -104,3 +104,9 @@ class Consumer(Worker):
             self.simulate_work()
             self.buffer.task_done()
             self.simulate_idle()
+
+class View:
+    def __init__(self, buffer, producers, consumers):
+        self.buffer = buffer
+        self.producers = producers
+        self.consumers = consumers
