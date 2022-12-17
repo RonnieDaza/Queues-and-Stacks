@@ -69,3 +69,12 @@ lifo.append("3rd")
 print(lifo.pop())
 print(lifo.pop())
 print(lifo.pop())
+
+from heapq import heappush
+
+fruits = []
+heappush(fruits, "orange")
+heappush(fruits, "apple")
+heappush(fruits, "banana")
+
+print(fruits)
