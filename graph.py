@@ -253,3 +253,20 @@ for node in nx.dfs_tree(graph, nodes["edinburgh"]):
     if is_twentieth_century(node.year):
         print("Found:", node.name, node.year)
         break
+
+
+
+
+
+def depth_first_traverse(graph, source, order_by=None):
+    stack = Stack(source)
+    visited = set()
+    while stack:
+        if (node := stack.dequeue()) not in visited:
+            yield node
+            visited.add(node)
+            neighbors = list(graph.neighbors(node))
+            if order_by:
+                neighbors.sort(key=order_by)
+            for neighbor in reversed(neighbors):
+                stack.enqueue(neighbor)
