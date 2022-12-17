@@ -88,3 +88,18 @@ for node in nx.bfs_tree(graph, nodes["edinburgh"]):
     if is_twentieth_century(node.year):
         print("Found:", node.name, node.year)
         break
+
+
+
+
+
+def order(neighbors):
+    def by_latitude(city):
+        return city.latitude
+    return iter(sorted(neighbors, key=by_latitude, reverse=True))
+
+for node in nx.bfs_tree(graph, nodes["edinburgh"], sort_neighbors=order):
+    print("📍", node.name)
+    if is_twentieth_century(node.year):
+        print("Found:", node.name, node.year)
+        break
