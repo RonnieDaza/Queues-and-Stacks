@@ -2,7 +2,7 @@ import networkx as nx
 print(nx.nx_agraph.read_dot("/Users/user/Desktop/New folder/roadmap.dot"))
 
 import networkx as nx
-graph = nx.nx_agraph.read_dot("roadmap.dot")
+graph = nx.nx_agraph.read_dot("/Users/user/Desktop/New folder/roadmap.dot")
 print(graph.nodes["london"])
 
 from typing import NamedTuple
@@ -33,18 +33,19 @@ def load_graph(filename, node_factory):
         for name, attributes in graph.nodes(data=True)
     }
     return nodes, nx.Graph(
-        (nodes[name1], nodes[name2], weights)
+       (nodes[name1], nodes[name2], weights)
         for name1, name2, weights in graph.edges(data=True)
     )
 
-from graph import City, load_graph
 
-nodes, graph = load_graph("roadmap.dot", City.from_dict)
+
+
+
+nodes, graph = load_graph("/Users/user/Desktop/New folder/roadmap.dot", City.from_dict)
 
 nodes["london"]
 
 print(graph)
-
 
 
 
@@ -77,21 +78,16 @@ for neighbor, weights in sort_by(graph[nodes["london"]], by_distance):
 
 
 import networkx as nx
-from graph import City, load_graph
 
 def is_twentieth_century(year):
         return year and 1901 <= year <= 2000
 
-nodes, graph = load_graph("roadmap.dot", City.from_dict)
+nodes, graph = load_graph("/Users/user/Desktop/New folder/roadmap.dot", City.from_dict)
 for node in nx.bfs_tree(graph, nodes["edinburgh"]):
     print("📍", node.name)
     if is_twentieth_century(node.year):
         print("Found:", node.name, node.year)
         break
-
-
-
-
 
 def order(neighbors):
     def by_latitude(city):
@@ -108,7 +104,7 @@ for node in nx.bfs_tree(graph, nodes["edinburgh"], sort_neighbors=order):
 
 
 
-from queues import Queue
+
 
 def breadth_first_traverse(graph, source):
     queue = Queue(source)
@@ -149,9 +145,9 @@ from graph import (
 def is_twentieth_century(city):
     return city.year and 1901 <= city.year <= 2000
 
-nodes, graph = load_graph("roadmap.dot", City.from_dict)
+nodes, graph = load_graph("/Users/user/Desktop/New folder/roadmap.dot", City.from_dict)
 city = bfs(graph, nodes["edinburgh"], is_twentieth_century)
-city.name
+print(city.name)
 
 for city in breadth_first_traverse(graph, nodes["edinburgh"]):
     print(city.name)
@@ -161,9 +157,8 @@ for city in breadth_first_traverse(graph, nodes["edinburgh"]):
 
 
 import networkx as nx
-from graph import City, load_graph
 
-nodes, graph = load_graph("roadmap.dot", City.from_dict)
+nodes, graph = load_graph("/Users/user/Desktop/New folder/roadmap.dot", City.from_dict)
 
 city1 = nodes["aberdeen"]
 city2 = nodes["perth"]
@@ -238,6 +233,7 @@ def connected(graph, source, destination):
 
 
 
+
 from graph import connected
 connected(graph, nodes["belfast"], nodes["glasgow"])
 connected(graph, nodes["belfast"], nodes["derry"])
@@ -247,16 +243,13 @@ connected(graph, nodes["belfast"], nodes["derry"])
 
 
 import networkx as nx
-from graph import City, load_graph
 
 def is_twentieth_century(year):
     return year and 1901 <= year <= 2000
 
-nodes, graph = load_graph("roadmap.dot", City.from_dict)
+nodes, graph = load_graph("/Users/user/Desktop/New folder/roadmap.dot", City.from_dict)
 for node in nx.dfs_tree(graph, nodes["edinburgh"]):
     print("📍", node.name)
     if is_twentieth_century(node.year):
         print("Found:", node.name, node.year)
         break
-    else:
-        print("Not found")
