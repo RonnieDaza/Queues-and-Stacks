@@ -36,3 +36,11 @@ def load_graph(filename, node_factory):
         (nodes[name1], nodes[name2], weights)
         for name1, name2, weights in graph.edges(data=True)
     )
+
+from graph import City, load_graph
+
+nodes, graph = load_graph("roadmap.dot", City.from_dict)
+
+nodes["london"]
+
+print(graph)
